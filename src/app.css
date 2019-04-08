@@ -1,0 +1,15 @@
+.site-container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.display {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

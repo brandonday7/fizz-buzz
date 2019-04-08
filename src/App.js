@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { fizzOrBuzz } from "./utils.js"
+import UserInput from "./UserInput"
 
+import "./app.css"
 
 class App extends Component {
   constructor(props) {
@@ -27,11 +29,13 @@ class App extends Component {
   render() {
     const { counter } = this.state
     return (
-      <div>
-        <p onClick={this.increment}>Increment</p>
-        <p onClick={this.decrement}>Decrement</p>
+      <div className="site-container">
+        <div className="display">
+          <UserInput onClick={this.decrement} type="decrement" />
+          <h1>{counter}</h1>
+          <UserInput onClick={this.increment} type="increment" />
+        </div>
 
-        <h1>{counter}</h1>
         <h1>{fizzOrBuzz(counter)}</h1>
       </div>
     );
