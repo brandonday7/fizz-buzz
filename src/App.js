@@ -1,10 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      counter: 98
+    }
+  }
+
+  increment = () => {
+    const { counter } = this.state
+    if (counter < 100) {
+      this.setState({ counter: counter + 1 })
+    }
+  }
+
+  decrement = () => {
+    const { counter } = this.state
+    if (counter > 1) {
+      this.setState({ counter: counter - 1 })
+    }
+  }
+
   render() {
+    const { counter } = this.state
     return (
-      <div className="App">
+      <div>
+        <p onClick={this.increment}>Increment</p>
+        <p onClick={this.decrement}>Decrement</p>
+
+        <h1>{counter}</h1>
       </div>
     );
   }
