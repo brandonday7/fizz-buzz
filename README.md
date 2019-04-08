@@ -12,4 +12,4 @@ npm start
 
 If you go to http://localhost:3000, your screen should look like this:
 
-<img src="https://raw.github.com/brandonday7/fizz-buzz/master/src/images/fizzBuzz.png" alt="examples" width="800"/>
+<img src="https://raw.github.com/brandonday7/fizz-buzz/master/public/images/fizzBuzz.png" alt="fizzBuzz" width="800"/>
