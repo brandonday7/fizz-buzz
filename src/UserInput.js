@@ -1,7 +1,10 @@
 import React from "react"
 
 const UserInput = ({ onClick, type }) => (
-	<p onClick={onClick}>{type === "increment" ? "+" : "-"}</p>
+	<div className="input-box" onClick={onClick}>
+		<h3>{type === "increment" ? "+" : "-"}</h3>
+	</div>
+
 )
 
 export default UserInput

@@ -32,11 +32,11 @@ class App extends Component {
       <div className="site-container">
         <div className="display">
           <UserInput onClick={this.decrement} type="decrement" />
-          <h1>{counter}</h1>
+          <h1 className="counter">{counter}</h1>
           <UserInput onClick={this.increment} type="increment" />
         </div>
 
-        <h1>{fizzOrBuzz(counter)}</h1>
+        <h1 className="fizz-buzz">{fizzOrBuzz(counter)}</h1>
       </div>
     );
   }
