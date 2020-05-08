@@ -13,26 +13,35 @@ on:
     - 'src/**'
 
 jobs:
-  eslint:
-    name: runner / eslint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: eslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.LEGACY_LINTER_SECRET }}
-          reporter: github-pr-review # Change reporter.
-          eslint_flags: 'src/'
-  # build:
+  # eslint:
+  #   name: runner / eslint
   #   runs-on: ubuntu-latest
-    
   #   steps:
-  #   - uses: actions/checkout@master
-  #   - name: Use Node.js 10.x
-  #     uses: actions/setup-node@v1.4.2
-  #     with:
-  #       node-version: 10.x
+  #     - uses: actions/checkout@v1
+  #     - name: eslint
+  #       uses: reviewdog/action-eslint@v1
+  #       with:
+  #         github_token: ${{ secrets.LEGACY_LINTER_SECRET }}
+  #         reporter: github-pr-review # Change reporter.
+  #         eslint_flags: 'src/'
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1.4.2
+      with:
+        node-version: 10.x
+    - name: Get file changes
+      id: get_file_changes
+      uses: dorner/file-changes-action@v1.2.0
+      with:
+        githubToken: ${{ secrets.LEGACY_LINTER_SECRET }}
+        plaintext: true
+    - name: Echo file changes
+      run: |
+        echo Changed files: ${{ steps.get_file_changes.outputs.files }}
     # - name: Legacy JS Linter
     #   run: |
     #     yarn install
