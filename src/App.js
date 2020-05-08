@@ -26,7 +26,7 @@ class App extends Component {
   }
   render() {
     // const lint = 4
-    // no error again again again
+    // no error again again again this file should show up
     const { counter } = this.state
     return (
       <div className="site-container">
