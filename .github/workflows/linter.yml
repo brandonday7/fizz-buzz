@@ -41,11 +41,9 @@ jobs:
         # plaintext: true
     - name: Filter file changes
       uses: actions/github-script@0.9.0
-        with:
-          # github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            const relevant_files = [1, 2, 3]
-            console.log(relevant_files)
+        script: |
+          const relevant_files = [1, 2, 3]
+          console.log(relevant_files)
       # run: |
         # echo Changed files: ${{ steps.get_file_changes.outputs.files }}
     # - name: Legacy JS Linter
