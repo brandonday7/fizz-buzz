@@ -53,4 +53,4 @@ jobs:
     - name: Legacy JS Linter
       uses: stefanoeb/eslint-action@1.0.2
       with:
-        files: ${{ steps.filtered_file_changes.outputs.result }}
+        files: ${{ steps.filtered_file_changes.outputs.result }}[0]
