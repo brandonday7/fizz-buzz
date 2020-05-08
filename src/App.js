@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { fizzOrBuzz } from "./utils.js"
 import UserInput from "./UserInput"
-hey
+
 import "./app.css"
-// no longer a mistake
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -11,14 +11,14 @@ class App extends Component {
       counter: 1
     }
   }
-no
+
   increment = () => {
     const { counter } = this.state
     if (counter < 100) {
       this.setState({ counter: counter + 1 })
     }
   }
-way
+
   decrement = () => {
     const { counter } = this.state
     if (counter > 1) {
