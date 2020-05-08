@@ -13,21 +13,30 @@ on:
     - 'src/**'
 
 jobs:
-  build:
+  eslint:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@v1.4.2
-      with:
-        node-version: 10.x
-    - uses: trilom/file-changes-action@v1.2.3
-    - name: 'Get changed files'
-      with: 
-        fileOutput: ','
-    - name: Echo file changes
-          run: echo Changed files: ${{ steps.get_file_changes.outputs.files }}
+      - uses: actions/checkout@v1
+      - uses: stefanoeb/eslint-action@1.0.2
+        with:
+          files: src/
+
+  # build:
+  #   runs-on: ubuntu-latest
+    
+  #   steps:
+  #   - uses: actions/checkout@master
+  #   - name: Use Node.js 10.x
+  #     uses: actions/setup-node@v1.4.2
+  #     with:
+  #       node-version: 10.x
+    # - uses: trilom/file-changes-action@v1.2.3
+    # - name: 'Get changed files'
+    #   with: 
+    #     fileOutput: ','
+    # - name: Echo file changes
+    #       run: |
+    #         echo Changed files: ${{ steps.get_file_changes.outputs.files }}
     # - name: Legacy JS Linter
     #   run: |
     #     yarn install
