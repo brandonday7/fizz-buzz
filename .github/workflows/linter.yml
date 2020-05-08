@@ -21,12 +21,12 @@ jobs:
   #     - name: eslint
   #       uses: reviewdog/action-eslint@v1
   #       with:
-  #         github_token: ${{ secrets.LEGACY_LINTER_SECRET }}
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
   #         reporter: github-pr-review # Change reporter.
   #         eslint_flags: 'src/'
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@master
     - name: Use Node.js 10.x
@@ -35,7 +35,7 @@ jobs:
         node-version: 10.x
     - name: Get file changes
       id: get_file_changes
-      uses: dorner/file-changes-action@v1.2.0
+      uses: trilom/file-changes-action@v1.2.3
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         plaintext: true
