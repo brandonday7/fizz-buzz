@@ -44,8 +44,8 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-        const relevant_files = [1, 2, 3]
-        console.log(relevant_files)
+          const relevant_files = [1, 2, 3]
+          console.log(relevant_files)
       # run: |
         # echo Changed files: ${{ steps.get_file_changes.outputs.files }}
     # - name: Legacy JS Linter
