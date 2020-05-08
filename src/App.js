@@ -26,6 +26,7 @@ class App extends Component {
   }
   render() {
     // const lint = 4
+    // no error just run through please
     const { counter } = this.state
     return (
       <div className="site-container">
