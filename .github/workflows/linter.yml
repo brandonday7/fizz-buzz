@@ -22,7 +22,14 @@ jobs:
       uses: actions/setup-node@v1.4.2
       with:
         node-version: 10.x
-    - name: Legacy JS Linter
-      run: |
-        yarn install
-        yarn lint src/
+    - uses: trilom/file-changes-action@v1.2.3
+    - name: 'Get changed files'
+      with: 
+        fileOutput: ','
+    - name: Echo file changes
+          run: |
+            echo Changed files: ${{ steps.get_file_changes.outputs.files }}
+    # - name: Legacy JS Linter
+    #   run: |
+    #     yarn install
+    #     yarn lint src/
