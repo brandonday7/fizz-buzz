@@ -24,6 +24,7 @@ class App extends Component {
       this.setState({ counter: counter - 1 })
     }
   }
+  thisError!
 
   render() {
     const { counter } = this.state
