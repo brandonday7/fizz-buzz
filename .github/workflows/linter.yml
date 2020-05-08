@@ -27,8 +27,7 @@ jobs:
       with: 
         fileOutput: ','
     - name: Echo file changes
-          run: |
-            echo Changed files: ${{ steps.get_file_changes.outputs.files }}
+          run: echo Changed files: ${{ steps.get_file_changes.outputs.files }}
     # - name: Legacy JS Linter
     #   run: |
     #     yarn install
