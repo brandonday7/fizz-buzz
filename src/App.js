@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fizzOrBuzz } from "./utils.js"
 import UserInput from "./UserInput"
 import "./app.css"
-// no longer a mistake
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -24,9 +24,8 @@ class App extends Component {
       this.setState({ counter: counter - 1 })
     }
   }
-  thisError!
-
   render() {
+    // const lint = 4
     const { counter } = this.state
     return (
       <div className="site-container">
