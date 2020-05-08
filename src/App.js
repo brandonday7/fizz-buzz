@@ -26,7 +26,7 @@ class App extends Component {
   }
   render() {
     // const lint = 4
-    // CHANGE
+    // CHANGE this
     const { counter } = this.state
     return (
       <div className="site-container">
