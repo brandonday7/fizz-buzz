@@ -3,7 +3,7 @@ import { fizzOrBuzz } from "./utils.js"
 import UserInput from "./UserInput"
 
 import "./app.css"
-
+// no longer a mistake
 class App extends Component {
   constructor(props) {
     super(props)
