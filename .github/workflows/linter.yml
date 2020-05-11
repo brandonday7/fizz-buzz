@@ -32,7 +32,7 @@ jobs:
           const relevantFiles = changedFiles.filter(f => f.match(RELEVANT_FILE_TYPE)).join(' ')
 
           if (relevantFiles) {
-            return "yarn install && yarn lint" + relevantFiles + " --max-warnings=0"
+            return "yarn install && yarn lint " + relevantFiles + " --max-warnings=0"
           }
           return ':'
     - name: Legacy JS Linter
