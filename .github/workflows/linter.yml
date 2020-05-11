@@ -28,6 +28,7 @@ jobs:
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: Filter file changes
+      id: filtered_file_changes
       uses: actions/github-script@0.9.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,6 +45,9 @@ jobs:
             return "yarn install && yarn lint" + relevant_files
           }
           return ':'
+    - name: Echo relevant files
+      run: |
+        echo Lint command: ${{ steps.filtered_file_changes.outputs.result }}
     - name: Legacy JS Linter
       run: |
         eval ${{ steps.filtered_file_changes.outputs.result }}
