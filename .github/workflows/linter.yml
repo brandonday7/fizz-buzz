@@ -46,21 +46,13 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const LEGACY_PATH = /^src\/.*\.(js|jsx|ts|tsx)$/
-          let relevant_files = ""
-          console.log(typeof ${{ steps.get_file_changes.outputs.files }})
-          ${{ steps.get_file_changes.outputs.files }}.forEach(f => {
-            if (f.match(LEGACY_PATH)) {
-              relevant_files += f
-            }
-          })
+          let relevant_files = "helloo"
+          ${{ steps.get_file_changes.outputs.files }}.filter(f => f.match(LEGACY_PATH))
           return relevant_files
     # - name: Echo relevant files
     #   run: |
     #     echo Changed files: ${{ steps.filtered_file_changes.outputs.result }}
     - name: Legacy JS Linter
-      # uses: stefanoeb/eslint-action@1.0.2
-      # with:
-      #   files: ${{ steps.filtered_file_changes.outputs.result }}
-      run: |
-        yarn install
-        yarn lint ${{ steps.filtered_file_changes.outputs.result }}
+      uses: stefanoeb/eslint-action@1.0.2
+      with:
+        files: ${{ steps.filtered_file_changes.outputs.result }}
