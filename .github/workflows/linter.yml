@@ -46,7 +46,14 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const LEGACY_PATH = /^src\/.*\.(js|jsx|ts|tsx)$/
-          return relevant_files = ${{ steps.get_file_changes.outputs.files }}.filter(f => f.match(LEGACY_PATH))
+          let relevant_files = ""
+          ${{ steps.get_file_changes.outputs.files }}.forEach(f => {
+            console.log(f)
+            if (f.match(LEGACY_PATH)) {
+              relevant_files += f
+            }
+          })
+          return relevant_files
     - name: Echo relevant files
       run: |
         echo Changed files: ${{ steps.filtered_file_changes.outputs.result }}
