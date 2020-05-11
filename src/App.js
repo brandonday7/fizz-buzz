@@ -23,7 +23,7 @@ class App extends Component {
     if (counter > 1) {
       this.setState({ counter: counter - 1 })
     }
-    const x = 6
+
   }
   render() {
     const { counter } = this.state
