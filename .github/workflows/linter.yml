@@ -28,22 +28,23 @@ jobs:
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: Filter file changes
+      id: filter_file_changes
       uses: actions/github-script@0.9.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx|ts|tsx)$/
-          let relevant_files = ""
-          const changed_files = ${{ steps.get_file_changes.outputs.files }}
-          changed_files.forEach(f => {
+          let relevantFiles = ""
+          const changedFiles = ${{ steps.get_file_changes.outputs.files }}
+          changedFiles.forEach(f => {
             if (f.match(RELEVANT_FILE_TYPE)) {
-              relevant_files += " " + f
+              relevantFiles += " " + f
             }
           })
-          if (relevant_files) {
-            return "yarn install && yarn lint" + relevant_files
+          if (relevantFiles) {
+            return "yarn install && yarn lint" + relevantFiles
           }
           return ':'
     - name: Legacy JS Linter
       run: |
-        eval ${{ steps.filtered_file_changes.outputs.result }}
+        eval ${{ steps.filter_file_changes.outputs.result }}
