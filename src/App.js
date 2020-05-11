@@ -24,10 +24,12 @@ class App extends Component {
     if (counter > 1) {
       this.setState({ counter: counter - 1 })
     }
+    i am going to put a massive error right here
   }
 
   render() {
     const { counter } = this.state
+    const x = 5
     return (
       <div className="site-container">
         <div className="display">
