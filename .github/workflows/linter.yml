@@ -45,20 +45,18 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const LEGACY_PATH = /^src\/.*\.(js|jsx|ts|tsx)$/
-          let relevant_files = "yarn lint"
+          const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx|ts|tsx)$/
+          let relevant_files = ""
           const changed_files = ${{ steps.get_file_changes.outputs.files }}
           changed_files.forEach(f => {
-            console.log(f)
-            if (f.match(LEGACY_PATH)) {
+            if (f.match(RELEVANT_FILE_TYPE)) {
               relevant_files += " " + f
             }
           })
-          return relevant_files
+          return "yarn install && yarn lint" + relevant_files
     - name: Echo relevant files
       run: |
-        echo Changed files: ${{ steps.filtered_file_changes.outputs.result }}
+        echo Lint command: ${{ steps.filtered_file_changes.outputs.result }}
     - name: Legacy JS Linter
       run: |
-        yarn install
         eval ${{ steps.filtered_file_changes.outputs.result }}
