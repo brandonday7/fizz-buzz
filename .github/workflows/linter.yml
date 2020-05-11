@@ -49,5 +49,9 @@ jobs:
       run: |
         echo Lint command: ${{ steps.filtered_file_changes.outputs.result }}
     - name: Legacy JS Linter
+      when:
+        condition:
+          all:
+            relevantFilesChanged: '${{ steps.filtered_file_changes.outputs.result }}'
       run: |
         eval ${{ steps.filtered_file_changes.outputs.result }}
