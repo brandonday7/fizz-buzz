@@ -22,7 +22,7 @@ jobs:
     - name: Get file changes
       id: get_file_changes
       uses: trilom/file-changes-action@v1.2.3
-      with:
+      # with:
         # GITHUB_TOKEN is provided by the Github Actions App,
         # providing access for the Github action to read/write to the repository
         # https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token
