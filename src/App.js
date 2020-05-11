@@ -25,7 +25,7 @@ class App extends Component {
     }
   }
   render() {
-    // change file change
+    // change file change change
     const { counter } = this.state
     return (
       <div className="site-container">
