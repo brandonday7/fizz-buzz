@@ -51,7 +51,7 @@ jobs:
           changed_files.forEach(f => {
             console.log(f)
             if (f.match(LEGACY_PATH)) {
-              relevant_files += f
+              relevant_files += " " + f
             }
           })
           return relevant_files
