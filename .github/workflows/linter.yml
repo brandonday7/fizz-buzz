@@ -15,14 +15,35 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@master
     - name: Use Node.js 10.x
       uses: actions/setup-node@v1.4.2
       with:
         node-version: 10.x
+    - name: Get file changes
+      id: get_file_changes
+      uses: trilom/file-changes-action@v1.2.3
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
+    - name: Filter file changes
+      uses: actions/github-script@0.9.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx|ts|tsx)$/
+          let relevant_files = ""
+          const changed_files = ${{ steps.get_file_changes.outputs.files }}
+          changed_files.forEach(f => {
+            if (f.match(RELEVANT_FILE_TYPE)) {
+              relevant_files += " " + f
+            }
+          })
+          if (relevant_files) {
+            return "yarn install && yarn lint" + relevant_files
+          }
+          return ':'
     - name: Legacy JS Linter
       run: |
-        yarn install
-        yarn lint src/
+        eval ${{ steps.filtered_file_changes.outputs.result }}
