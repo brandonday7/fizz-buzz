@@ -41,7 +41,10 @@ jobs:
               relevant_files += " " + f
             }
           })
-          return "yarn install && yarn lint" + relevant_files
+          if (relevant_files) {
+            return "yarn install && yarn lint" + relevant_files
+          }
+          return null
     - name: Echo relevant files
       run: |
         echo Lint command: ${{ steps.filtered_file_changes.outputs.result }}
