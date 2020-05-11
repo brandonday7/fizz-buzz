@@ -47,7 +47,7 @@ jobs:
         script: |
           const LEGACY_PATH = /^src\/.*\.(js|jsx|ts|tsx)$/
           let relevant_files = ""
-          console.log(${{ steps.get_file_changes.outputs.files }})
+          console.log(typeof ${{ steps.get_file_changes.outputs.files }})
           ${{ steps.get_file_changes.outputs.files }}.forEach(f => {
             if (f.match(LEGACY_PATH)) {
               relevant_files += f
