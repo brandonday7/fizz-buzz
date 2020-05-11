@@ -29,7 +29,7 @@ jobs:
         script: |
           const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx)$/
           const changedFiles = ${{ steps.get_file_changes.outputs.files }}
-          const relevantFiles = changedFiles.filter(f => f.match(RELEVANT_FILE_TYPE).join(' ')
+          const relevantFiles = changedFiles.filter(f => f.match(RELEVANT_FILE_TYPE)).join(' ')
 
           if (relevantFiles) {
             return "yarn install && yarn lint" + relevantFiles + " --max-warnings=0"
