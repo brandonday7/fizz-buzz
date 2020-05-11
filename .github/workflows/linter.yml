@@ -42,7 +42,7 @@ jobs:
             }
           })
           if (relevantFiles) {
-            return "yarn install && yarn lint" + relevantFiles
+            return "yarn install && yarn lint" + relevantFiles + " --max-warnings=0"
           }
           return ':'
     - name: Legacy JS Linter
