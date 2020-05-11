@@ -25,8 +25,10 @@ ERRRORORRRR
       this.setState({ counter: counter - 1 })
     }
   }
-
+  
   render() {
+    const x = 6
+    const y = 3
     const { counter } = this.state
     return (
       <div className="site-container">
