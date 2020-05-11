@@ -5,12 +5,12 @@ on:
     branches: 
       - master
     paths:
-    - 'src/**'
+      - 'src/**'
   push:
     branches:
       - master
     paths:
-    - 'src/**'
+      - 'src/**'
 
 jobs:
   build:
@@ -23,14 +23,17 @@ jobs:
       id: get_file_changes
       uses: trilom/file-changes-action@v1.2.3
       with:
+        # GITHUB_TOKEN is provided by the Github Actions App,
+        # providing access for the Github action to read/write to the repository
+        # https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token
         githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: Filter file changes
       id: filter_file_changes
       uses: actions/github-script@0.9.0
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        # github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx|ts|tsx)$/
+          const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx)$/
           let relevantFiles = ""
           const changedFiles = ${{ steps.get_file_changes.outputs.files }}
           changedFiles.forEach(f => {
