@@ -24,6 +24,7 @@ class App extends Component {
       this.setState({ counter: counter - 1 })
     }
     i am going to put a massive error right here
+    // this
   }
   render() {
     // change file change change
