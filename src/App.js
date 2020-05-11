@@ -27,7 +27,6 @@ class App extends Component {
   }
   render() {
     const { counter } = this.state
-    const x = 5
     return (
       <div className="site-container">
         <div className="display">
@@ -39,7 +38,6 @@ class App extends Component {
         <h1 className="fizz-buzz">{fizzOrBuzz(counter)}</h1>
       </div>
     );
-    const y = 7
   }
 }
 
