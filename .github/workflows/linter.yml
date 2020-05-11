@@ -46,7 +46,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const LEGACY_PATH = /^src\/.*\.(js|jsx|ts|tsx)$/
-          let relevant_files = ""
+          let relevant_files = "yarn lint"
           const changed_files = ${{ steps.get_file_changes.outputs.files }}
           changed_files.forEach(f => {
             console.log(f)
@@ -61,4 +61,4 @@ jobs:
     - name: Legacy JS Linter
       run: |
         yarn install
-        yarn lint ${{ steps.filtered_file_changes.outputs.result }}
+        eval ${{ steps.filtered_file_changes.outputs.result }}
