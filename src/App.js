@@ -27,6 +27,7 @@ class App extends Component {
   render() {
     // const lint = 4
     // CHANGE this change change change change
+    const i am going to put an error in this file
     const { counter } = this.state
     return (
       <div className="site-container">
