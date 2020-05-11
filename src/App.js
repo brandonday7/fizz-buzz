@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { fizzOrBuzz } from "./utils.js"
 import UserInput from "./UserInput"
-
 import "./app.css"
-// no longer a mistake
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -26,8 +25,8 @@ class App extends Component {
     }
     i am going to put a massive error right here
   }
-
   render() {
+    // change file change change
     const { counter } = this.state
     const x = 5
     return (
