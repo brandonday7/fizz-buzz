@@ -28,7 +28,7 @@ here
   render() {
     const { counter } = this.state
     // test this out out this too another change
-    // put and error in the file another change change this here
+    // put and error in the file another change ch here tooange this here
     return (
       <div className="site-container">
         <div className="display">
