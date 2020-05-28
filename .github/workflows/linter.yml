@@ -22,6 +22,8 @@ jobs:
     - name: Get file changes
       id: get_file_changes
       uses: futuratrepadeira/changed-files@v3.1.0
+      with:
+        repo-token: ${{ github.token }}
     - name: Filter file changes
       id: filter_file_changes
       uses: actions/github-script@0.9.0
