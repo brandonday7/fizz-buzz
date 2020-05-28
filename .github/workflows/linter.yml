@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout master
-      uses: actions/checkout@master
-    - name: Get file changes
+    # - name: Checkout master
+    #   uses: actions/checkout@master
+    - name: Lint Changed Legacy JS Files
       id: get_file_changes
       run: |
         URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
