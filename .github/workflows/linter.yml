@@ -21,12 +21,16 @@ jobs:
       uses: actions/checkout@master
     - name: Get file changes
       id: get_file_changes
-      uses: trilom/file-changes-action@v1.2.3
+      # uses: trilom/file-changes-action@v1.2.3
+      run: |
+        git show --pretty="" --name-only
     - name: Filter file changes
       id: filter_file_changes
       uses: actions/github-script@0.9.0
       with:
         script: |
+          console.log(${{ steps.get_file_changes }})
+          console.log(${{ steps.get_file_changes.outputs }})
           const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx)$/
           const changedFiles = ${{ steps.get_file_changes.outputs.files }}
           const relevantFiles = changedFiles.filter(f => f.match(RELEVANT_FILE_TYPE)).join(' ')
