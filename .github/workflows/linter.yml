@@ -21,9 +21,10 @@ jobs:
       uses: actions/checkout@master
     - name: Get file changes
       id: get_file_changes
-      uses: futuratrepadeira/changed-files@v3.1.0
-      with:
-        repo-token: ${{ github.token }}
+      run: |
+        URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
+        echo $FILES
     - name: Filter file changes
       id: filter_file_changes
       uses: actions/github-script@0.9.0
