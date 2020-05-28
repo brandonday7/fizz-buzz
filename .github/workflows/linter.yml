@@ -24,7 +24,7 @@ jobs:
       run: |
         URL="https://api.github.com/repos/brandonday7/fizz-buzz/pulls/8/files"
         FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename' | grep -E '^src\/.*\.(js|jsx)$')
-        yarn install && yarn lint echo $FILES --max-warnings=0
+        yarn install && yarn lint $FILES --max-warnings=0
         echo $FILES
     # - name: Filter file changes
     #   id: filter_file_changes
