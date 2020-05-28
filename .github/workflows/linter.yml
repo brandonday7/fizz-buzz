@@ -6,11 +6,6 @@ on:
       - master
     paths:
       - 'src/**'
-  push:
-    branches:
-      - master
-    paths:
-      - 'src/**'
 
 jobs:
   build:
@@ -22,23 +17,7 @@ jobs:
     - name: Lint Changed Legacy JS Files
       run: |
         URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
+        echo $URL
         FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename' | grep -E '^src\/.*\.(js|jsx)$')
         echo "FILES: " $FILES
         yarn install && yarn lint $FILES --max-warnings=0
-    # - name: Filter file changes
-    #   id: filter_file_changes
-    #   uses: actions/github-script@0.9.0
-    #   with:
-    #     script: |
-    #       console.log(${{ steps.get_file_changes.outputs }})
-    #       const RELEVANT_FILE_TYPE = /^src\/.*\.(js|jsx)$/
-    #       const changedFiles = ${{ steps.get_file_changes.outputs.files }}
-    #       const relevantFiles = changedFiles.filter(f => f.match(RELEVANT_FILE_TYPE)).join(' ')
-
-    #       if (relevantFiles) {
-    #         return "yarn install && yarn lint " + relevantFiles + " --max-warnings=0"
-    #       }
-    #       return ':'
-    # - name: Legacy JS Linter
-    #   run: |
-    #     eval ${{ steps.filter_file_changes.outputs.result }}
