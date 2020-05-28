@@ -17,6 +17,7 @@ class App extends Component {
       this.setState({ counter: counter + 1 })
     }
   }
+  // hey
 
   decrement = () => {
     const { counter } = this.state
