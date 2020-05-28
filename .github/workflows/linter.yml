@@ -22,8 +22,8 @@ jobs:
     - name: Get file changes
       id: get_file_changes
       run: |
-        URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
-        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
+        URL="https://api.github.com/repos/brandonday7/fizz-buzz/pulls/8/files"
+        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename' | grep -E '^src\/.*\.(js|jsx)$')
         echo $FILES
     - name: Filter file changes
       id: filter_file_changes
