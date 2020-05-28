@@ -28,6 +28,7 @@ class App extends Component {
   render() {
     const { counter } = this.state
     // test this out out this too
+    put and error in the file
     return (
       <div className="site-container">
         <div className="display">
