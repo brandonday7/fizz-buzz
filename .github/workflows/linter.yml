@@ -23,7 +23,7 @@ jobs:
       id: get_file_changes
       run: |
         URL="https://api.github.com/repos/brandonday7/fizz-buzz/pulls/8/files"
-        FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename' | grep -E '^src\/.*\.(js|jsx)$')
+        FILES=$(curl -s -X GET -G $URL)
         echo $FILES
     - name: Filter file changes
       id: filter_file_changes
