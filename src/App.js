@@ -27,7 +27,7 @@ class App extends Component {
   }
   render() {
     const { counter } = this.state
-    // test this out change 
+    // test this out 
     return (
       <div className="site-container">
         <div className="display">
