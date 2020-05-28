@@ -7,6 +7,5 @@ const fizzOrBuzz = counter => {
 
 export { fizzOrBuzz }
 
-change this
 //  this
 // this here
