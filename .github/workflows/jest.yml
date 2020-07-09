@@ -1,0 +1,17 @@
+name: JavaScript Tests
+
+on: 
+  pull_request:
+    branches: 
+      - master
+    paths:
+      - 'app/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Tests
+      run: |
+        yarn test
