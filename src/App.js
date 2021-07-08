@@ -23,11 +23,11 @@ class App extends Component {
     if (counter > 1) {
       this.setState({ counter: counter - 1 })
     }
-
   }
   render() {
     const { counter } = this.state
-    // test this out
+    // test this out out this too another change
+    // put and error in the file another change ch here tooange this here
     return (
       <div className="site-container">
         <div className="display">
